@@ -28,6 +28,17 @@ let runBestButton;
 
 let pause = false;
 let pauseButton;
+/* -------------------GRAPHICS----------- */
+let cloudFill,
+    catFill,
+    backgroundFill;
+
+function preload() {
+  cloudFill = loadImage('images/cloud.png');
+  catFill = loadImage('images/cat.png');
+  catFillLeft = loadImage('images/catL.png');
+  catFillRight = loadImage('images/catR.png');
+}
 
 function setup() {
   let canvas = createCanvas(600, 400);
@@ -58,6 +69,8 @@ function setup() {
     aliveAgents[i] = agent;
     allAgents[i] = agent;
   }
+
+  console.log(cloudFill);
 }
 
 function toggleState() {
@@ -91,7 +104,7 @@ function togglePauseState() {
 }
 
 function draw() {
-  background(0);
+  background(135,206,235);
   let currentObstacleScore = 0;
   let cycles = speedSlider.value();
   speedSpan.html(cycles);

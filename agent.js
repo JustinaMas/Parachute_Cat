@@ -19,6 +19,7 @@ class Agent {
     this.velocity = 0;
     this.score = 0;
     this.obstacleScore = 0;
+    this.movingDirection = 0;
 
     if (brain instanceof NeuralNetwork) {
       this.brain = brain.copy();
@@ -39,7 +40,16 @@ class Agent {
   show() {
     fill(255, 100);
     stroke(255);
-    ellipse(this.x, this.y, this.r * 2, this.r * 2);
+    if(this.movingDirection == -1) {
+      image(catFillLeft, this.x, this.y, this.r * 5, this.r * 5);
+    }
+    else if(this.movingDirection == 1) {
+      image(catFillRight, this.x, this.y, this.r * 5, this.r * 5);
+    }
+    else {
+      image(catFill, this.x, this.y, this.r * 5, this.r * 5);
+    }
+    
   }
 
   resetPosition(){
@@ -81,9 +91,11 @@ class Agent {
   }
   left() {
     this.x -= this.lift;
+    this.movingDirection = -1;
   }
   right() {
     this.x += this.lift;
+    this.movingDirection = 1;
   }
 
   hitSides() {

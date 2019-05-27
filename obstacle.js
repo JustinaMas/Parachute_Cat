@@ -31,9 +31,9 @@ class Obstacle {
 
   show() {
     stroke(255);
-    fill(200);
-    rect(0, this.y, this.top, this.w);
-    rect(width - this.bottom, this.y, width, this.w);
+    // fill(200);
+    image(cloudFill, 0, this.y, this.top, this.w);
+    image(cloudFill, width - this.bottom, this.y, width, this.w);
   }
 
   update() {
